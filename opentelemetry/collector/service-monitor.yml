@@ -1,0 +1,21 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    serviceapp: opentelemetry-collector
+    release: prometheus
+  name: opentelemetry-collector
+spec:
+  endpoints:
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      interval: 30s
+      port: prometheus
+  jobLabel: opentelemetry-collector
+  namespaceSelector:
+    any: false
+    matchNames:
+      - keptn-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: opentelemetry-collector
