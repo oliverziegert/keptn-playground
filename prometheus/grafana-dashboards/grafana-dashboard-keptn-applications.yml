@@ -750,7 +750,7 @@ data:
       "refresh": "5s",
       "schemaVersion": 37,
       "style": "dark",
-      "tags": [],
+      "tags": ["keptn"],
       "templating": {
         "list": [
           {

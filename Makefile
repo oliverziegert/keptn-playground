@@ -4,6 +4,8 @@ ARGO_NAMESPACE ?= argocd
 # renovate: datasource=github-tags depName=argoproj/argo-cd
 ARGO_VERSION ?= v2.9.3
 ARGO_SECRET = $(shell kubectl -n ${ARGO_NAMESPACE} get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo)
+GRAFANA_USER = $(shell kubectl -n prometheus get secret prometheus-grafana -o jsonpath="{.data.admin-user}" | base64 -d; echo)
+GRAFANA_SECRET = $(shell kubectl -n prometheus get secret prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 -d; echo)
 
 ################################ General ################################
 .PHONY: install
@@ -77,42 +79,57 @@ argo-uninstall:
 .PHONY: cert-manager-install
 cert-manager-install:
 	@echo "--------------------------------------"
-	@echo "Add Cert-Manager to ArgoCD"
+	@echo "Install "Cert-Manager" unsing ArgoCD"
 	@echo "--------------------------------------"
 	kubectl apply -f cert-manager.yaml -n "$(ARGO_NAMESPACE)"
 
 .PHONY: cert-manager-uninstall
 cert-manager-uninstall:
 	@echo "--------------------------------------"
-	@echo "Remove Cert-Manager from ArgoCD"
+	@echo "Remove Cert-Manager unsing ArgoCD"
 	@echo "--------------------------------------"
 	kubectl delete -f cert-manager.yaml -n "$(ARGO_NAMESPACE)" --ignore-not-found=true
 
 .PHONY: observability-install
 observability-install:
-	@echo "--------------------------------------"
-	@echo "Add "Observability Tools" to ArgoCD"
-	@echo "--------------------------------------"
+	@echo "---------------------------------------------------------"
+	@echo "Install "Observability Tools" using ArgoCD"
+	@echo "---------------------------------------------------------"
 	kubectl apply -f observability-root.yaml -n "$(ARGO_NAMESPACE)"
 
 .PHONY: observability-uninstall
 observability-uninstall:
+	@echo "---------------------------------------------------------"
+	@echo "Remove "Observability Tools" using ArgoCD"
+	@echo "---------------------------------------------------------"
 	kubectl delete -f observability-root.yaml -n "$(ARGO_NAMESPACE)" --ignore-not-found=true
 
 .PHONY: prometheus-install
 prometheus-install:
+	@echo "---------------------------------------------------------"
+	@echo "Install "Prometheus and Grafana" using ArgoCD"
+	@echo "---------------------------------------------------------"
 	kubectl apply -f prometheus-root.yaml -n "$(ARGO_NAMESPACE)"
 
 .PHONY: prometheus-uninstall
 prometheus-uninstall:
+	@echo "---------------------------------------------------------"
+	@echo "Remove "Prometheus and Grafana" using ArgoCD"
+	@echo "---------------------------------------------------------"
 	kubectl delete -f prometheus-root.yaml -n "$(ARGO_NAMESPACE)" --ignore-not-found=true
 
 .PHONY: opentelemetry-install
 opentelemetry-install:
+	@echo "---------------------------------------------------------"
+	@echo "Install "Open Telemetry Operator and Collector" using ArgoCD"
+	@echo "---------------------------------------------------------"
 	kubectl apply -f opentelemetry-root.yaml -n "$(ARGO_NAMESPACE)"
 
 .PHONY: opentelemetry-uninstall
 opentelemetry-uninstall:
+	@echo "---------------------------------------------------------"
+	@echo "Remove "Open Telemetry Operator and Collector" using ArgoCD"
+	@echo "---------------------------------------------------------"
 	kubectl delete -f opentelemetry-root.yaml -n "$(ARGO_NAMESPACE)" --ignore-not-found=true
 
 
@@ -132,7 +149,7 @@ port-forward-jaeger:
 	@echo "CTRL-c to stop port-forward"
 
 	@echo ""
-	kubectl port-forward -n "$(TOOLKIT_NAMESPACE)" svc/jaeger-query 16686
+	kubectl port-forward -n "keptn-system" svc/jaeger-query 16686
 
 .PHONY: port-forward-prometheus
 port-forward-prometheus:
@@ -140,7 +157,7 @@ port-forward-prometheus:
 	@echo "Open Prometheus in your Browser: http://localhost:9090"
 	@echo "CTRL-c to stop port-forward"
 	@echo ""
-	kubectl -n monitoring port-forward svc/prometheus-k8s 9090
+	kubectl port-forward -n prometheus svc/prometheus-kube-prometheus-prometheus 9090
 
 .PHONY: port-forward-grafana
 port-forward-grafana:
@@ -148,4 +165,17 @@ port-forward-grafana:
 	@echo "Open Grafana in your Browser: http://localhost:3000"
 	@echo "CTRL-c to stop port-forward"
 	@echo ""
-	kubectl -n monitoring port-forward svc/grafana 3000
+	@echo "#######################################################"
+	@echo "- Get Admin user: make grafana-get-user"
+	@echo "- Get Admin password: make grafana-get-password"
+	@echo "#######################################################"
+	kubectl port-forward -n prometheus svc/prometheus-grafana 3000:80
+
+
+.PHONY: grafana-get-user
+grafana-get-user:
+	@echo $(GRAFANA_USER)
+
+.PHONY: grafana-get-password
+grafana-get-password:
+	@echo $(GRAFANA_SECRET)
