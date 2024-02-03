@@ -119,7 +119,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "builder",
-              "expr": "sum by(job) (keptn_task_active{job=\"otel-collector\"})",
+              "expr": "sum by(job) (keptn_task_active{job=\"lifecycle-operator-metrics-service\"})",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -211,7 +211,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "builder",
-              "expr": "sum by(job) (keptn_evaluation_active{job=\"otel-collector\"})",
+              "expr": "sum by(job) (keptn_evaluation_active{job=\"lifecycle-operator-metrics-service\"})",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -303,7 +303,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "builder",
-              "expr": "sum by(job) (keptn_task_count{job=\"otel-collector\"})",
+              "expr": "sum by(job) (keptn_task_count{job=\"lifecycle-operator-metrics-service\"})",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -395,7 +395,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "builder",
-              "expr": "sum by(job) (keptn_evaluation_count_total{job=\"otel-collector\"})",
+              "expr": "sum by(job) (keptn_evaluation_count_total{job=\"lifecycle-operator-metrics-service\"})",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -461,7 +461,7 @@ data:
               },
               "editorMode": "builder",
               "exemplar": false,
-              "expr": "sort(sum by(le) (keptn_task_duration_bucket{job=\"otel-collector\", le!=\"+Inf\"}))",
+              "expr": "sort(sum by(le) (keptn_task_duration_bucket{job=\"lifecycle-operator-metrics-service\", le!=\"+Inf\"}))",
               "format": "time_series",
               "instant": false,
               "legendFormat": "{{le}}",
@@ -556,7 +556,7 @@ data:
               },
               "editorMode": "builder",
               "exemplar": false,
-              "expr": "sort(sum by(le) (keptn_evaluation_duration_bucket{job=\"otel-collector\", le!=\"+Inf\"}))",
+              "expr": "sort(sum by(le) (keptn_evaluation_duration_bucket{job=\"lifecycle-operator-metrics-service\", le!=\"+Inf\"}))",
               "format": "time_series",
               "instant": false,
               "legendFormat": "{{le}}",
@@ -677,7 +677,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "builder",
-              "expr": "sum by(job) (keptn_deployment_active{job=\"otel-collector\"})",
+              "expr": "sum by(job) (keptn_deployment_active{job=\"lifecycle-operator-metrics-service\"})",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -768,7 +768,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "builder",
-              "expr": "sum by(job) (keptn_deployment_count{job=\"otel-collector\"})",
+              "expr": "sum by(job) (keptn_deployment_count{job=\"lifecycle-operator-metrics-service\"})",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -833,7 +833,7 @@ data:
               },
               "editorMode": "builder",
               "exemplar": false,
-              "expr": "sort(sum by(le) (keptn_deployment_duration_bucket{job=\"otel-collector\", le!=\"+Inf\"}))",
+              "expr": "sort(sum by(le) (keptn_deployment_duration_bucket{job=\"lifecycle-operator-metrics-service\", le!=\"+Inf\"}))",
               "format": "time_series",
               "instant": false,
               "legendFormat": "{{le}}",
