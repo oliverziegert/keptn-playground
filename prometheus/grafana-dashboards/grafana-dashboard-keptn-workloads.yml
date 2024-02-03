@@ -32,7 +32,6 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 28,
       "links": [],
       "liveNow": false,
       "panels": [
@@ -56,7 +55,8 @@ data:
                     "value": null
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -79,9 +79,11 @@ data:
               "fields": "",
               "values": false
             },
-            "textMode": "auto"
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -127,7 +129,8 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "s",
+              "unitScale": true
             },
             "overrides": []
           },
@@ -139,6 +142,8 @@ data:
           },
           "id": 16,
           "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
               "calcs": [
@@ -148,9 +153,10 @@ data:
               "values": false
             },
             "showThresholdLabels": false,
-            "showThresholdMarkers": true
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -180,6 +186,7 @@ data:
                 "mode": "fixed"
               },
               "mappings": [],
+              "noValue": "0",
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
@@ -188,7 +195,8 @@ data:
                     "value": null
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -211,23 +219,29 @@ data:
               "fields": "",
               "values": false
             },
+            "showPercentChange": false,
             "text": {
               "valueSize": 100
             },
-            "textMode": "auto"
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
                 "uid": "prometheus"
               },
+              "disableTextWrap": false,
               "editorMode": "builder",
               "expr": "count(keptn_deployment_count_total{keptn_deployment_workload_name=\"$Workload\", keptn_deployment_workload_status=\"Failed\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "legendFormat": "__auto",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Failed",
@@ -257,7 +271,8 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "s",
+              "unitScale": true
             },
             "overrides": []
           },
@@ -270,8 +285,10 @@ data:
           "id": 14,
           "options": {
             "displayMode": "gradient",
+            "maxVizHeight": 300,
             "minVizHeight": 10,
             "minVizWidth": 0,
+            "namePlacement": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
@@ -280,9 +297,11 @@ data:
               "fields": "",
               "values": false
             },
-            "showUnfilled": true
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -325,7 +344,8 @@ data:
                     "value": 10
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -337,6 +357,8 @@ data:
           },
           "id": 4,
           "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
               "calcs": [
@@ -346,9 +368,10 @@ data:
               "values": false
             },
             "showThresholdLabels": false,
-            "showThresholdMarkers": true
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -389,7 +412,8 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "s",
+              "unitScale": true
             },
             "overrides": []
           },
@@ -402,8 +426,10 @@ data:
           "id": 10,
           "options": {
             "displayMode": "gradient",
+            "maxVizHeight": 300,
             "minVizHeight": 10,
             "minVizWidth": 0,
+            "namePlacement": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
@@ -412,9 +438,11 @@ data:
               "fields": "",
               "values": false
             },
-            "showUnfilled": true
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -435,7 +463,7 @@ data:
         {
           "datasource": {
             "type": "jaeger",
-            "uid": "PC9A941E8F2E49454"
+            "uid": "jaeger"
           },
           "fieldConfig": {
             "defaults": {
@@ -444,7 +472,9 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "displayMode": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
                 "inspect": false
               },
               "mappings": [],
@@ -460,7 +490,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -472,7 +503,9 @@ data:
           },
           "id": 8,
           "options": {
+            "cellHeight": "sm",
             "footer": {
+              "countRows": false,
               "fields": "",
               "reducer": [
                 "sum"
@@ -481,18 +514,18 @@ data:
             },
             "showHeader": true
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
                 "type": "jaeger",
-                "uid": "PC9A941E8F2E49454"
+                "uid": "jaeger"
               },
-              "operation": "$Workload/WorkloadPreDeployTasks",
+              "operation": "AppPreDeployTasks",
               "queryType": "search",
               "refId": "A",
               "service": "lifecycle-operator",
-              "tags": ""
+              "tags": "keptn.deployment.app.name=$Application"
             }
           ],
           "title": "Traces",
@@ -509,6 +542,7 @@ data:
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisBorderShow": false,
                 "axisCenteredZero": false,
                 "axisColorMode": "text",
                 "axisLabel": "",
@@ -522,6 +556,7 @@ data:
                   "tooltip": false,
                   "viz": false
                 },
+                "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
@@ -551,7 +586,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -593,17 +629,17 @@ data:
         }
       ],
       "refresh": "5s",
-      "schemaVersion": 37,
-      "style": "dark",
-      "tags": ["keptn"],
+      "schemaVersion": 39,
+      "tags": [
+        "keptn"
+      ],
       "templating": {
         "list": [
           {
             "current": {
-              "isNone": true,
-              "selected": false,
-              "text": "None",
-              "value": ""
+              "selected": true,
+              "text": "podtato-head-podtato-head-frontend",
+              "value": "podtato-head-podtato-head-frontend"
             },
             "datasource": {
               "type": "prometheus",
@@ -624,11 +660,34 @@ data:
             "skipUrlSync": false,
             "sort": 0,
             "type": "query"
+          },
+          {
+            "current": {
+              "selected": true,
+              "text": "podtato-head",
+              "value": "podtato-head"
+            },
+            "definition": "label_values(keptn_deployment_app_name)",
+            "hide": 0,
+            "includeAll": false,
+            "multi": false,
+            "name": "Application",
+            "options": [],
+            "query": {
+              "qryType": 1,
+              "query": "label_values(keptn_deployment_app_name)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 0,
+            "type": "query"
           }
         ]
       },
       "time": {
-        "from": "now-5m",
+        "from": "now-6h",
         "to": "now"
       },
       "timepicker": {},
@@ -638,4 +697,3 @@ data:
       "version": 1,
       "weekStart": ""
     }
-

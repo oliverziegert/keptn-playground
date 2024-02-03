@@ -32,7 +32,6 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 26,
       "links": [],
       "liveNow": false,
       "panels": [
@@ -56,7 +55,8 @@ data:
                     "value": null
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -79,12 +79,14 @@ data:
               "fields": "",
               "values": false
             },
+            "showPercentChange": false,
             "text": {
               "valueSize": 80
             },
-            "textMode": "auto"
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -145,7 +147,8 @@ data:
                     "value": 85
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -157,6 +160,8 @@ data:
           },
           "id": 4,
           "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
               "calcs": [
@@ -166,9 +171,10 @@ data:
               "values": false
             },
             "showThresholdLabels": false,
-            "showThresholdMarkers": true
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -205,7 +211,8 @@ data:
                     "value": null
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -228,12 +235,14 @@ data:
               "fields": "",
               "values": false
             },
+            "showPercentChange": false,
             "text": {
               "valueSize": 80
             },
-            "textMode": "auto"
+            "textMode": "auto",
+            "wideLayout": true
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -296,7 +305,8 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "s",
+              "unitScale": true
             },
             "overrides": []
           },
@@ -309,8 +319,10 @@ data:
           "id": 10,
           "options": {
             "displayMode": "gradient",
+            "maxVizHeight": 300,
             "minVizHeight": 10,
             "minVizWidth": 0,
+            "namePlacement": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
@@ -319,9 +331,11 @@ data:
               "fields": "",
               "values": false
             },
-            "showUnfilled": true
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -368,7 +382,8 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "s",
+              "unitScale": true
             },
             "overrides": []
           },
@@ -380,6 +395,8 @@ data:
           },
           "id": 16,
           "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
               "calcs": [
@@ -389,9 +406,10 @@ data:
               "values": false
             },
             "showThresholdLabels": false,
-            "showThresholdMarkers": true
+            "showThresholdMarkers": true,
+            "sizing": "auto"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -432,7 +450,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -445,8 +464,10 @@ data:
           "id": 14,
           "options": {
             "displayMode": "gradient",
+            "maxVizHeight": 300,
             "minVizHeight": 10,
             "minVizWidth": 0,
+            "namePlacement": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
@@ -455,9 +476,11 @@ data:
               "fields": "",
               "values": false
             },
-            "showUnfilled": true
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -486,6 +509,7 @@ data:
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisBorderShow": false,
                 "axisCenteredZero": false,
                 "axisColorMode": "text",
                 "axisLabel": "",
@@ -499,6 +523,7 @@ data:
                   "tooltip": false,
                   "viz": false
                 },
+                "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 3,
@@ -528,7 +553,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -571,7 +597,8 @@ data:
         },
         {
           "datasource": {
-            "type": "jaeger"
+            "type": "jaeger",
+            "uid": "jaeger"
           },
           "fieldConfig": {
             "defaults": {
@@ -580,7 +607,9 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "displayMode": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
                 "inspect": false
               },
               "mappings": [],
@@ -596,7 +625,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": []
           },
@@ -608,7 +638,9 @@ data:
           },
           "id": 8,
           "options": {
+            "cellHeight": "sm",
             "footer": {
+              "countRows": false,
               "fields": "",
               "reducer": [
                 "sum"
@@ -617,7 +649,7 @@ data:
             },
             "showHeader": true
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -646,7 +678,9 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "displayMode": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
                 "inspect": false
               },
               "mappings": [],
@@ -662,7 +696,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unitScale": true
             },
             "overrides": [
               {
@@ -687,7 +722,9 @@ data:
           },
           "id": 21,
           "options": {
+            "cellHeight": "sm",
             "footer": {
+              "countRows": false,
               "fields": "",
               "reducer": [
                 "sum"
@@ -696,7 +733,7 @@ data:
             },
             "showHeader": false
           },
-          "pluginVersion": "9.2.1",
+          "pluginVersion": "10.3.1",
           "targets": [
             {
               "datasource": {
@@ -748,9 +785,10 @@ data:
         }
       ],
       "refresh": "5s",
-      "schemaVersion": 37,
-      "style": "dark",
-      "tags": ["keptn"],
+      "schemaVersion": 39,
+      "tags": [
+        "keptn"
+      ],
       "templating": {
         "list": [
           {
