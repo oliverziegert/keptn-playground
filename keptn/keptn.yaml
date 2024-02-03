@@ -22,6 +22,10 @@ spec:
           enabled: true
         metricsOperator:
           enabled: true
+        global:
+          certManagerEnabled: false # disable Keptn Cert Manager
+          caInjectionAnnotations:
+            cert-manager.io/inject-ca-from: keptn-system/keptn-certs
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: keptn-system
