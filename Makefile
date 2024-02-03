@@ -60,10 +60,25 @@ argo-configure-cli:
 argo-get-password:
 	@echo $(ARGO_SECRET)
 
-.PHONY: argo-install-podtatohead
-argo-install-podtatohead:
+.PHONY: argo-install-podtatohead-v1
+argo-install-podtatohead-v1:
 	@echo ""
-	kubectl apply -f argocd/app.yaml -n "$(ARGO_NAMESPACE)" 
+	kubectl apply -f argocd/app-v1.yaml -n "$(ARGO_NAMESPACE)" 
+
+.PHONY: argo-install-podtatohead-v2
+argo-install-podtatohead-v2:
+	@echo ""
+	kubectl apply -f argocd/app-v2.yaml -n "$(ARGO_NAMESPACE)" 
+
+.PHONY: argo-install-podtatohead-v3
+argo-install-podtatohead-v3:
+	@echo ""
+	kubectl apply -f argocd/app-v3.yaml -n "$(ARGO_NAMESPACE)" 
+
+.PHONY: argo-uninstall-podtatohead
+argo-uninstall-podtatohead:
+	@echo ""
+	kubectl delete -f argocd/app-v1.yaml -n "$(ARGO_NAMESPACE)" 
 
 .PHONY: argo-uninstall
 argo-uninstall:
@@ -149,11 +164,11 @@ keptn-uninstall:
 .PHONY: port-forward-argocd
 port-forward-argocd:
 	@echo ""
-	@echo "Open ArgoCD in your Browser: http://localhost:8080"
+	@echo "Open ArgoCD in your Browser: http://localhost:8443"
 	@echo "CTRL-c to stop port-forward"
 
 	@echo ""
-	kubectl port-forward svc/argocd-server -n "$(ARGO_NAMESPACE)" 8080:443
+	kubectl port-forward svc/argocd-server -n "$(ARGO_NAMESPACE)" 8443:443
 
 .PHONY: port-forward-jaeger
 port-forward-jaeger:
@@ -183,6 +198,14 @@ port-forward-grafana:
 	@echo "- Get Admin password: make grafana-get-password"
 	@echo "#######################################################"
 	kubectl port-forward -n prometheus svc/prometheus-grafana 3000:80
+
+.PHONY: port-forward-podtatohead
+port-forward-podtatohead:
+	@echo ""
+	@echo "Open Podtatohead in your Browser: http://localhost:8080"
+	@echo "CTRL-c to stop port-forward"
+	@echo ""
+	kubectl port-forward -n podtato-kubectl svc/podtato-head-frontend 8080
 
 
 .PHONY: grafana-get-user
