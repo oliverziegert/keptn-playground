@@ -135,14 +135,14 @@ opentelemetry-uninstall:
 .PHONY: keptn-install
 keptn-install:
 	@echo "---------------------------------------------------------"
-	@echo "Install "Open Telemetry Operator and Collector" using ArgoCD"
+	@echo "Install "Keptn" using ArgoCD"
 	@echo "---------------------------------------------------------"
 	kubectl apply -f keptn-root.yaml -n "$(ARGO_NAMESPACE)"
 
 .PHONY: keptn-uninstall
 keptn-uninstall:
 	@echo "---------------------------------------------------------"
-	@echo "Remove "Open Telemetry Operator and Collector" using ArgoCD"
+	@echo "Remove "Keptn" using ArgoCD"
 	@echo "---------------------------------------------------------"
 	kubectl delete -f keptn-root.yaml -n "$(ARGO_NAMESPACE)" --ignore-not-found=true
 
