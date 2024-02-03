@@ -33,6 +33,22 @@ spec:
             enableAdminAPI: true
         grafana:
           enabled: true
+          additionalDataSources:
+            - orgId: 1
+              name: Jaeger
+              type: jaeger
+              typeName: Jaeger
+              typeLogoUrl: public/app/plugins/datasource/jaeger/img/jaeger_logo.svg
+              access: proxy
+              url: http://jaeger-query.keptn-system.svc.cluster.local:16686
+              user: ''
+              database: ''
+              basicAuth: false
+              isDefault: false
+              jsonData:
+                spanBar: 
+                  type: None
+              readOnly: false
         defaultRules:
           create: true
   destination:
