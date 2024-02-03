@@ -1,0 +1,21 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    serviceapp: otel-collector
+    release: prometheus
+  name: otel-collector
+spec:
+  endpoints:
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      interval: 5s
+      port: metrics
+  jobLabel: otel-collector
+  namespaceSelector:
+    any: false
+    matchNames:
+      - keptn-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: lifecycle-operator

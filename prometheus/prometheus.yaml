@@ -31,11 +31,6 @@ spec:
         prometheus:
           prometheusSpec:
             enableAdminAPI: true
-            additionalScrapeConfigs:
-              - job_name: "scrape_klt"
-                scrape_interval: 5s
-                static_configs:
-                  - targets: ['lifecycle-operator-metrics-service.keptn-system.svc.cluster.local:2222']
         grafana:
           adminPassword: admin
           enabled: true
