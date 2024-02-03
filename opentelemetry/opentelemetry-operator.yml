@@ -1,21 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jaeger-operator
+  name: opentelemetry-operator
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "0"
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/oliverziegert/keptn-playground.git'
-    path: observability/jaeger-operator
-    targetRevision: main
+    chart: opentelemetry-operator
+    repoURL: 'https://open-telemetry.github.io/opentelemetry-helm-charts'
+    targetRevision: 55.5.0
+    helm:
+      releaseName: opentelemetry-operator
+      values: >-
+        
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: jaeger-operator
+    namespace: opentelemetry-system
   syncPolicy:
     automated:
       prune: true

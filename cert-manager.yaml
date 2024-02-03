@@ -20,10 +20,6 @@ spec:
           nameservers:
             - 9.9.9.9
             - 1.1.1.1
-        prometheus:
-          enabled: true
-          servicemonitor:
-            enabled: true
         extraArgs:
           - --enable-certificate-owner-ref
           - --dns01-recursive-nameservers-only

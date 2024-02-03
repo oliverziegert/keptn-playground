@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-root
+  name: opentelemetry-root
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/oliverziegert/keptn-playground.git'
-    path: prometheus
+    path: opentelemetry
     targetRevision: main
   destination:
     server: 'https://kubernetes.default.svc'
