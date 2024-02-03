@@ -58,15 +58,6 @@ argo-configure-cli:
 argo-get-password:
 	@echo $(ARGO_SECRET)
 
-.PHONY: port-forward-argocd
-port-forward-argocd:
-	@echo ""
-	@echo "Open ArgoCD in your Browser: http://localhost:8080"
-	@echo "CTRL-c to stop port-forward"
-
-	@echo ""
-	kubectl port-forward svc/argocd-server -n "$(ARGO_NAMESPACE)" 8080:443
-
 .PHONY: argo-install-podtatohead
 argo-install-podtatohead:
 	@echo ""
@@ -85,14 +76,23 @@ argo-uninstall:
 ################################ ArgoCD Apps ################################
 .PHONY: cert-manager-install
 cert-manager-install:
+	@echo "--------------------------------------"
+	@echo "Add Cert-Manager to ArgoCD"
+	@echo "--------------------------------------"
 	kubectl apply -f cert-manager.yaml -n "$(ARGO_NAMESPACE)"
 
 .PHONY: cert-manager-uninstall
 cert-manager-uninstall:
+	@echo "--------------------------------------"
+	@echo "Remove Cert-Manager from ArgoCD"
+	@echo "--------------------------------------"
 	kubectl delete -f cert-manager.yaml -n "$(ARGO_NAMESPACE)" --ignore-not-found=true
 
 .PHONY: observability-install
 observability-install:
+	@echo "--------------------------------------"
+	@echo "Add "Observability Tools" to ArgoCD"
+	@echo "--------------------------------------"
 	kubectl apply -f observability-root.yaml -n "$(ARGO_NAMESPACE)"
 
 .PHONY: observability-uninstall
@@ -114,3 +114,38 @@ opentelemetry-install:
 .PHONY: opentelemetry-uninstall
 opentelemetry-uninstall:
 	kubectl delete -f opentelemetry-root.yaml -n "$(ARGO_NAMESPACE)" --ignore-not-found=true
+
+
+.PHONY: port-forward-argocd
+port-forward-argocd:
+	@echo ""
+	@echo "Open ArgoCD in your Browser: http://localhost:8080"
+	@echo "CTRL-c to stop port-forward"
+
+	@echo ""
+	kubectl port-forward svc/argocd-server -n "$(ARGO_NAMESPACE)" 8080:443
+
+.PHONY: port-forward-jaeger
+port-forward-jaeger:
+	@echo ""
+	@echo "Open Jaeger in your Browser: http://localhost:16686"
+	@echo "CTRL-c to stop port-forward"
+
+	@echo ""
+	kubectl port-forward -n "$(TOOLKIT_NAMESPACE)" svc/jaeger-query 16686
+
+.PHONY: port-forward-prometheus
+port-forward-prometheus:
+	@echo ""
+	@echo "Open Prometheus in your Browser: http://localhost:9090"
+	@echo "CTRL-c to stop port-forward"
+	@echo ""
+	kubectl -n monitoring port-forward svc/prometheus-k8s 9090
+
+.PHONY: port-forward-grafana
+port-forward-grafana:
+	@echo ""
+	@echo "Open Grafana in your Browser: http://localhost:3000"
+	@echo "CTRL-c to stop port-forward"
+	@echo ""
+	kubectl -n monitoring port-forward svc/grafana 3000
