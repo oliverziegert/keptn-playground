@@ -3,5 +3,5 @@ kind: KeptnConfig
 metadata:
   name: keptnconfig-sample
 spec:
-  OTelCollectorUrl: 'otel-collector:4317'
+  OTelCollectorUrl: 'opentelemetry-collector-collector:4317'
   keptnAppCreationRequestTimeoutSeconds: 30
