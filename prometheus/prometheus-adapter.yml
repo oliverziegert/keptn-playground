@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: top-prometheus-adapter
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: prometheus-adapter
+    repoURL: 'https://prometheus-community.github.io/helm-charts'
+    targetRevision: 4.9.0
+    helm:
+      releaseName: prometheus-adapter
+      values: |
+        prometheus:
+          url: "http://prometheus-kube-prometheus-prometheus.prometheus"
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: prometheus
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
