@@ -571,7 +571,7 @@ data:
         },
         {
           "datasource": {
-            "type": "jaeger",
+            "type": "jaeger"
           },
           "fieldConfig": {
             "defaults": {

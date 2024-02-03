@@ -434,7 +434,7 @@ data:
         },
         {
           "datasource": {
-            "type": "jaeger"
+            "type": "jaeger",
             "uid": "PC9A941E8F2E49454"
           },
           "fieldConfig": {
