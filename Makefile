@@ -16,10 +16,10 @@ uninstall: argo-uninstall
 
 ################################ Tools ################################
 .PHONY: install-tools
-install-tools: cert-manager-install observability-install prometheus-install opentelemetry-install
+install-tools: cert-manager-install observability-install prometheus-install keptn-install
 
 .PHONY: uninstall-tools
-uninstall-tools: cert-manager-uninstall observability-uninstall prometheus-uninstall opentelemetry-uninstall
+uninstall-tools: keptn-uninstall prometheus-uninstall observability-uninstall cert-manager-uninstall
 
 ################################ ArgoCD ################################
 
@@ -73,7 +73,12 @@ argo-install-podtatohead-v2:
 .PHONY: argo-install-podtatohead-v3
 argo-install-podtatohead-v3:
 	@echo ""
-	kubectl apply -f argocd/app-v3.yaml -n "$(ARGO_NAMESPACE)" 
+	kubectl apply -f argocd/app-v3.yaml -n "$(ARGO_NAMESPACE)"
+
+.PHONY: argo-install-podtatohead-v4
+argo-install-podtatohead-v4:
+	@echo ""
+	kubectl apply -f argocd/app-v4.yaml -n "$(ARGO_NAMESPACE)" 
 
 .PHONY: argo-uninstall-podtatohead
 argo-uninstall-podtatohead:

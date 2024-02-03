@@ -3,5 +3,5 @@ kind: KeptnConfig
 metadata:
   name: keptnconfig-sample
 spec:
-  OTelCollectorUrl: 'opentelemetry-collector-collector:4317'
+  OTelCollectorUrl: 'jaeger-collector.keptn-system.svc.cluster.local:4317'
   keptnAppCreationRequestTimeoutSeconds: 30
