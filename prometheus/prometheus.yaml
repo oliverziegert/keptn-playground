@@ -36,6 +36,7 @@ spec:
           enabled: true
           additionalDataSources:
             - orgId: 1
+              uid: jaeger
               name: Jaeger
               type: jaeger
               typeName: Jaeger
