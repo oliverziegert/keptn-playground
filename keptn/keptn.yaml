@@ -12,7 +12,7 @@ spec:
   source:
     chart: keptn
     repoURL: 'https://charts.lifecycle.keptn.sh'
-    targetRevision: 0.5.2
+    targetRevision: 0.6.0
     helm:
       releaseName: keptn
       values: >-
